@@ -21,7 +21,7 @@ class Dashboard extends BaseDashboard
     protected function getHeaderWidgets(): array
     {
         return [
-            PropertiRequestsChart::class,
+            // PropertiRequestsChart::class,
         ];
     }
 
@@ -30,7 +30,7 @@ class Dashboard extends BaseDashboard
         return [
             PropertiTypesPieChart::class,
             RequestStatusChart::class,
-            RequestStatusDonutChart::class,
+            // RequestStatusDonutChart::class,
             LatestProperti::class,
             LatestPermintaanInfo::class,
         ];

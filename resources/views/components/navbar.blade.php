@@ -4,7 +4,7 @@
         <a href="{{ url('/') }}" class="text-2xl font-bold text-white">logo</a>
 
         <div class="hidden md:flex items-center space-x-8">
-            <a href="{{ url('/home') }}" class="nav-link text-white hover:text-primary transition-colors">Beranda</a>
+            <a href="{{ url('/') }}" class="nav-link text-white hover:text-primary transition-colors">Beranda</a>
             <a href="{{ url('/properti') }}" class="nav-link text-white hover:text-primary transition-colors">Properti</a>
             <a href="{{ url('/artikel') }}" class="nav-link text-white hover:text-primary transition-colors">Artikel</a>
             <a href="{{ url('/kontak') }}" class="nav-link text-white hover:text-primary transition-colors">Kontak</a>

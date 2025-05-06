@@ -9,8 +9,12 @@ Route::get('/', function () {
     return view('home.index');
 });
 
-Route::get('/properti', [PropertiController::class, 'index']);
-Route::get('/properti/{id}', [PropertiController::class, 'show']);
+// Route::get('/properti', [PropertiController::class, 'index']);
+// Route::get('/properti/{id}', [PropertiController::class, 'show']);
+Route::get('/properti', function () {
+    return view('properti.index');
+});
+
 
 Route::get('/artikel', [ArtikelController::class, 'index']);
 Route::get('/artikel/{id}', [ArtikelController::class, 'show']);

@@ -22,7 +22,7 @@
         <div class="container mx-auto px-6">
             <div class="bg-white shadow-xl rounded-lg -mt-24 relative z-10 p-8">
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                    <div>
+                        <div>
                         <label class="block text-gray-700 font-medium mb-2">Tipe Properti</label>
                         <div class="relative">
                             <select class="w-full bg-gray-50 border border-gray-200 rounded px-4 py-3 appearance-none focus:outline-none focus:border-primary pr-8">
@@ -36,8 +36,8 @@
                                 <i class="ri-arrow-down-s-line text-gray-500"></i>
                             </div>
                         </div>
-                    </div>
-                    <div>
+                        </div>
+                        <div>
                         <label class="block text-gray-700 font-medium mb-2">Lokasi</label>
                         <div class="relative">
                             <select class="w-full bg-gray-50 border border-gray-200 rounded px-4 py-3 appearance-none focus:outline-none focus:border-primary pr-8">
@@ -51,8 +51,8 @@
                                 <i class="ri-arrow-down-s-line text-gray-500"></i>
                             </div>
                         </div>
-                    </div>
-                    <div>
+                        </div>
+                        <div>
                         <label class="block text-gray-700 font-medium mb-2">Rentang Harga</label>
                         <div class="relative">
                             <select class="w-full bg-gray-50 border border-gray-200 rounded px-4 py-3 appearance-none focus:outline-none focus:border-primary pr-8">
@@ -170,19 +170,19 @@
                             <div class="flex items-center">
                                 <div class="w-5 h-5 flex items-center justify-center mr-2">
                                     <i class="ri-hotel-bed-line"></i>
-                                </div>
+                            </div>
                                 <span>7 Kamar</span>
                             </div>
                             <div class="flex items-center">
                                 <div class="w-5 h-5 flex items-center justify-center mr-2">
                                     <i class="ri-home-4-line"></i>
-                                </div>
+                            </div>
                                 <span>1200 m²</span>
                             </div>
                             <div class="flex items-center">
                                 <div class="w-5 h-5 flex items-center justify-center mr-2">
                                     <i class="ri-car-line"></i>
-                                </div>
+                            </div>
                                 <span>5 Garasi</span>
                             </div>
                         </div>
@@ -264,7 +264,7 @@
                             <i class="ri-star-fill"></i>
                             <i class="ri-star-fill"></i>
                             <i class="ri-star-half-fill"></i>
-                        </div>
+                </div>
                     </div>
                     <p class="text-gray-600 italic">"Proses pembelian villa di Bali menjadi sangat mudah berkat bantuan tim mereka. Mereka menangani semua aspek legal dan administrasi dengan profesional, bahkan saat saya berada di luar negeri."</p>
                 </div>
@@ -296,8 +296,8 @@
                             Baca Selengkapnya
                             <div class="w-5 h-5 flex items-center justify-center ml-1">
                                 <i class="ri-arrow-right-line"></i>
-                            </div>
-                        </a>
+                    </div>
+                </a>
                     </div>
                 </div>
 
@@ -316,8 +316,8 @@
                             Baca Selengkapnya
                             <div class="w-5 h-5 flex items-center justify-center ml-1">
                                 <i class="ri-arrow-right-line"></i>
-                            </div>
-                        </a>
+                    </div>
+                </a>
                     </div>
                 </div>
 
@@ -336,8 +336,8 @@
                             Baca Selengkapnya
                             <div class="w-5 h-5 flex items-center justify-center ml-1">
                                 <i class="ri-arrow-right-line"></i>
-                            </div>
-                        </a>
+                    </div>
+                </a>
                     </div>
                 </div>
             </div>
@@ -373,7 +373,7 @@
                         <div class="mb-6">
                             <label for="phone" class="block text-gray-700 font-medium mb-2">Nomor Telepon</label>
                             <input type="tel" id="phone" class="w-full bg-white border border-gray-200 rounded px-4 py-3 focus:outline-none focus:border-primary" placeholder="Masukkan nomor telepon">
-                        </div>
+                </div>
 
                         <div class="mb-6">
                             <label for="interest" class="block text-gray-700 font-medium mb-2">Saya Tertarik Dengan</label>
@@ -400,7 +400,7 @@
                         <div class="mb-6 flex items-start">
                             <input type="checkbox" id="agree" class="custom-checkbox mt-1">
                             <label for="agree" class="ml-3 text-gray-600 text-sm">Saya setuju untuk menerima informasi dan penawaran terkait properti melalui email dan telepon.</label>
-                        </div>
+                    </div>
 
                         <button type="submit" class="bg-primary text-white px-8 py-3 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all font-medium w-full md:w-auto">Kirim Pesan</button>
                     </form>
@@ -447,7 +447,7 @@
                                     <div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mr-4 mt-1">
                                         <i class="ri-time-line text-primary"></i>
                                     </div>
-                                    <div>
+                            <div>
                                         <h4 class="font-bold mb-1">Jam Operasional</h4>
                                         <p class="text-gray-600">Senin - Jumat: 09.00 - 17.00 WIB<br>Sabtu: 09.00 - 15.00 WIB</p>
                                     </div>

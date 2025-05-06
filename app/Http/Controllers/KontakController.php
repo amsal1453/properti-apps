@@ -10,7 +10,7 @@ class KontakController extends Controller
     // Menampilkan form kontak
     public function form()
     {
-        return view('kontak.form');
+        return view('kontak.index');
     }
 
     // Mengirim form permintaan info

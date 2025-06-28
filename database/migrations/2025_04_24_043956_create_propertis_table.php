@@ -20,6 +20,16 @@ return new class extends Migration
             $table->string('pemilik');
             $table->string('tipe_properti');
             $table->string('status');
+            $table->integer('harga');
+            $table->enum('satuan_harga', ['unit', 'bulan', 'tahun'])->default('unit');
+            $table->integer('jumlah_kamar')->default(0);
+            $table->integer('jumlah_kamar_mandi')->default(0);
+            $table->integer('jumlah_parkir')->default(0);
+            $table->integer('luas_bangunan')->default(0);
+            $table->decimal('latitude', 10, 8)->nullable();
+            $table->decimal('longitude', 11, 8)->nullable();
+            $table->string('gambar_utama')->nullable();
+            $table->boolean('is_promo')->default(false);
             $table->timestamps();
         });
     }

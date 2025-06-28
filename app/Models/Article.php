@@ -9,11 +9,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Article extends Model
 {
     use HasFactory;
+    protected $fillable = ['judul', 'konten', 'excerpt', 'kategori', 'gambar', 'slug', 'admin_id', 'tanggal_posting'];
 
-    protected $fillable = ['judul', 'konten', 'admin_id', 'tanggal_posting'];
-
-    public function user(): BelongsTo
+    public function admin(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'admin_id');
+        return $this->belongsTo(User::class);
     }
 }

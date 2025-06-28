@@ -282,7 +282,8 @@
                         <i class="ri-arrow-right-s-line"></i>
                     </div>
                 </a>
-            </nav>
+            </nav>\
+            
         </div>
     </main>
 @endsection

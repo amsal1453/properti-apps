@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class GambarProperti extends Model
 {
-    use HasFactory;
+    protected $table = 'gambar_propertis';
 
     protected $fillable = ['properti_id', 'file_path', 'keterangan'];
 
     public function properti(): BelongsTo
     {
-        return $this->belongsTo(Properti::class, 'properti_id');
+        return $this->belongsTo(Properti::class);
     }
 }

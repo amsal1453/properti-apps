@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('gambar_propertis', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('properti_id');
+            $table->foreignId('properti_id')->constrained('propertis')->cascadeOnDelete();
             $table->string('file_path');
-            $table->string('keterangan')->nullable();
-            $table->foreign('properti_id')->references('id')->on('propertis')->onDelete('cascade');
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }

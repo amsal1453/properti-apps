@@ -17,16 +17,25 @@ class Properti extends Model
         'whatsapp_pemilik',
         'pemilik',
         'tipe_properti',
-        'status'
+        'status',
+        'harga',
+        'satuan_harga',
+        'jumlah_kamar',
+        'jumlah_kamar_mandi',
+        'jumlah_parkir',
+        'luas_bangunan',
+        'latitude',
+        'longitude',
+        'gambar_utama',
+        'is_promo'
     ];
-
-    public function gambarProperti(): HasMany
+    public function gambar(): HasMany
     {
-        return $this->hasMany(GambarProperti::class, 'properti_id');
+        return $this->hasMany(GambarProperti::class);
     }
 
-    public function permintaanInfo(): HasMany
+    public function permintaanInfos(): HasMany
     {
-        return $this->hasMany(PermintaanInfo::class, 'properti_id');
+        return $this->hasMany(PermintaanInfo::class);
     }
 }

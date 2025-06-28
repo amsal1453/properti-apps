@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -15,11 +16,13 @@ return new class extends Migration
             $table->id();
             $table->string('judul');
             $table->text('konten');
-            $table->unsignedBigInteger('admin_id'); // User ID
-            $table->date('tanggal_posting');
+            $table->text('excerpt')->nullable();
+            $table->string('kategori');
+            $table->string('gambar')->nullable();
+            $table->string('slug')->unique();
+            $table->foreignId('admin_id')->constrained('users')->cascadeOnDelete();
+            $table->date('tanggal_posting')->nullable();
             $table->timestamps();
-
-            $table->foreign('admin_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

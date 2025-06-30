@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class ArticleResource extends Resource
 {
@@ -32,17 +33,43 @@ class ArticleResource extends Resource
                 Forms\Components\TextInput::make('judul')
                     ->required()
                     ->maxLength(255)
+                ->live(onBlur: true)
+                ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
+                    if ($operation === 'create') {
+                        $set('slug', Str::slug($state));
+                    }
+                })
                     ->columnSpanFull(),
-                Forms\Components\RichEditor::make('konten')
+            Forms\Components\TextInput::make('slug')
                     ->required()
+                ->maxLength(255)
+                ->unique(Article::class, 'slug', ignoreRecord: true)
                     ->columnSpanFull(),
-                Forms\Components\DateTimePicker::make('tanggal_posting')
+            Forms\Components\Select::make('kategori')
+                ->required()
+                ->options([
+                    'berita' => 'Berita',
+                    'artikel' => 'Artikel',
+                    'pengumuman' => 'Pengumuman',
+                ]),
+            Forms\Components\DatePicker::make('tanggal_posting')
                     ->required()
                     ->default(now()),
                 Forms\Components\Select::make('admin_id')
-                    ->relationship('user', 'name')
+                ->relationship('admin', 'name')
                     ->required()
                     ->label('Penulis'),
+            Forms\Components\FileUpload::make('gambar')
+                ->image()
+                ->directory('artikel-images')
+                ->columnSpanFull(),
+            Forms\Components\RichEditor::make('konten')
+                ->required()
+                ->columnSpanFull(),
+            Forms\Components\Textarea::make('excerpt')
+                ->rows(3)
+                ->helperText('Ringkasan singkat artikel. Jika dikosongkan akan otomatis diambil dari konten.')
+                ->columnSpanFull(),
             ]);
     }
 
@@ -52,13 +79,26 @@ class ArticleResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('judul')
                     ->searchable()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('user.name')
+                ->sortable()
+                ->limit(50),
+            Tables\Columns\TextColumn::make('kategori')
+                ->searchable()
+                ->sortable()
+                ->badge()
+                ->color(fn(string $state): string => match ($state) {
+                    'berita' => 'info',
+                    'artikel' => 'success',
+                    'pengumuman' => 'warning',
+                    default => 'gray',
+                }),
+            Tables\Columns\ImageColumn::make('gambar')
+                ->circular(),
+            Tables\Columns\TextColumn::make('admin.name')
                     ->label('Penulis')
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('tanggal_posting')
-                    ->dateTime()
+                ->date()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -70,7 +110,12 @@ class ArticleResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+            Tables\Filters\SelectFilter::make('kategori')
+                ->options([
+                    'berita' => 'Berita',
+                    'artikel' => 'Artikel',
+                    'pengumuman' => 'Pengumuman',
+                ]),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),

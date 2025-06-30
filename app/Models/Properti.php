@@ -5,10 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\Image\Enums\Fit;
 
-class Properti extends Model
+class Properti extends Model implements HasMedia
 {
     use HasFactory;
+    use InteractsWithMedia;
 
     protected $fillable = [
         'nama_properti',
@@ -26,12 +31,20 @@ class Properti extends Model
         'luas_bangunan',
         'latitude',
         'longitude',
-        'gambar_utama',
         'is_promo'
     ];
-    public function gambar(): HasMany
+
+    public function registerMediaCollections(): void
     {
-        return $this->hasMany(GambarProperti::class);
+        $this->addMediaCollection('gambar_properti');
+    }
+
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this
+            ->addMediaConversion('thumb')
+            ->fit(Fit::Crop, 300, 200)
+            ->nonQueued();
     }
 
     public function permintaanInfos(): HasMany

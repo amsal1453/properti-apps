@@ -47,6 +47,14 @@ return [
             'report' => false,
         ],
 
+        'properti-images' => [
+            'driver' => 'local',
+            'root' => public_path('properti-images'),
+            'url' => env('APP_URL') . '/properti-images',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

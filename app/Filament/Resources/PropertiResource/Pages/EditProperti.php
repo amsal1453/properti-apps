@@ -16,4 +16,16 @@ class EditProperti extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
+        // Handle the map data
+        if (isset($data['peta'])) {
+            $data['latitude'] = $data['peta']['lat'] ?? null;
+            $data['longitude'] = $data['peta']['lng'] ?? null;
+            unset($data['peta']);
+        }
+
+        return $data;
+    }
 }

@@ -3,19 +3,113 @@
 @section('title', 'Beranda')
 
 @section('content')
-    <!-- New Hero Section -->
-    <section id="home" class="relative h-screen flex items-center" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://readdy.ai/api/search-image?query=A%20luxurious%20modern%20mansion%20with%20a%20sleek%20architectural%20design%2C%20surrounded%20by%20lush%20landscaping%20and%20palm%20trees.%20The%20property%20features%20large%20glass%20windows%2C%20a%20beautiful%20infinity%20pool%2C%20and%20an%20elegant%20entrance.%20The%20scene%20is%20captured%20during%20golden%20hour%20with%20warm%20lighting%2C%20creating%20a%20sophisticated%20and%20high-end%20atmosphere.%20The%20left%20side%20of%20the%20image%20has%20a%20darker%20gradient%20to%20allow%20white%20text%20to%20be%20clearly%20visible.&width=1920&height=1080&seq=hero1&orientation=landscape'); background-size: cover; background-position: center;">
-        <div class="container mx-auto px-6 w-full">
-            <div class="max-w-2xl">
-                <h1 class="text-5xl md:text-6xl font-bold text-white leading-tight mb-4">Temukan Hunian Mewah Impian Anda</h1>
-                <p class="text-xl text-gray-200 mb-8">Kami menawarkan koleksi properti eksklusif dengan desain arsitektur terbaik dan lokasi strategis di seluruh Indonesia.</p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <button class="bg-primary text-white px-8 py-3 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all text-lg font-medium">Jelajahi Properti</button>
-                    <button class="bg-transparent border-2 border-white text-white px-8 py-3 !rounded-button whitespace-nowrap hover:bg-white hover:text-secondary transition-all text-lg font-medium">Konsultasi Gratis</button>
+    <!-- Hero Section Carousel with Swiper.js -->
+    <section class="swiper-hero-section h-screen relative overflow-hidden">
+        <!-- Swiper Container -->
+        <div class="swiper hero-swiper h-full w-full">
+            <!-- Swiper Wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slide 1 -->
+                <div class="swiper-slide relative">
+                    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ asset('images/hero1.jpg.jpg') }}');"></div>
+                    <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
+                        <div class="container mx-auto px-6 text-center">
+                            <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-4">Temukan Hunian Mewah Impian Anda</h1>
+                            <p class="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">Kami menawarkan koleksi properti eksklusif dengan desain arsitektur terbaik dan lokasi strategis di seluruh Indonesia.</p>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                <button class="bg-primary text-white px-8 py-3 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all text-lg font-medium">Jelajahi Properti</button>
+                                <button class="bg-transparent border-2 border-white text-white px-8 py-3 !rounded-button whitespace-nowrap hover:bg-white hover:text-secondary transition-all text-lg font-medium">Konsultasi Gratis</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="swiper-slide relative">
+                    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ asset('images/hero2.jpg.jpg') }}');"></div>
+                    <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
+                        <div class="container mx-auto px-6 text-center">
+                            <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-4">Investasi Properti Premium</h1>
+                            <p class="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">Tingkatkan portofolio investasi Anda dengan properti eksklusif yang menawarkan nilai apresiasi tinggi.</p>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                <button class="bg-primary text-white px-8 py-3 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all text-lg font-medium">Mulai Investasi</button>
+                                <button class="bg-transparent border-2 border-white text-white px-8 py-3 !rounded-button whitespace-nowrap hover:bg-white hover:text-secondary transition-all text-lg font-medium">Hubungi Ahli</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="swiper-slide relative">
+                    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ asset('images/hero3.jpg.jpg') }}');"></div>
+                    <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
+                        <div class="container mx-auto px-6 text-center">
+                            <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-4">Pengalaman Hunian Mewah</h1>
+                            <p class="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">Nikmati kenyamanan hidup dengan fasilitas eksklusif dan layanan premium di lokasi strategis.</p>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                <button class="bg-primary text-white px-8 py-3 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all text-lg font-medium">Lihat Properti</button>
+                                <button class="bg-transparent border-2 border-white text-white px-8 py-3 !rounded-button whitespace-nowrap hover:bg-white hover:text-secondary transition-all text-lg font-medium">Jadwalkan Tur</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <!-- Swiper Pagination -->
+            <div class="swiper-pagination"></div>
         </div>
     </section>
+
+    <!-- Swiper.js Hero Carousel Initialization -->
+    @push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            new Swiper('.hero-swiper', {
+                // Enable fade effect with improved smoothness
+                effect: 'fade',
+                fadeEffect: {
+                    crossFade: true
+                },
+
+                // Slower transition speed for smoother fade (in ms)
+                speed: 1000,
+
+                // Auto play with 4 second delay and smooth transitions
+                autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: false,
+                    waitForTransition: true
+                },
+
+                // Improved smoothness settings
+                observer: true,
+                observeParents: true,
+
+                // Looping
+                loop: true,
+
+                // Pagination
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+
+                // Responsive breakpoints
+                breakpoints: {
+                    640: {
+                        speed: 800
+                    },
+                    768: {
+                        speed: 900
+                    },
+                    1024: {
+                        speed: 1000
+                    },
+                }
+            });
+        });
+    </script>
+    @endpush
 
     <!-- Search Section -->
     <section class="py-12 bg-white">
@@ -84,114 +178,73 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Property 1 -->
+                @forelse($featuredProperties as $property)
+                <!-- Property Card -->
                 <div class="property-card bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-300">
-                    <div class="relative">
-                        <img src="https://readdy.ai/api/search-image?query=A%20luxurious%20modern%20villa%20with%20clean%20architectural%20lines%2C%20floor-to-ceiling%20windows%2C%20and%20a%20beautiful%20infinity%20pool%20overlooking%20a%20spectacular%20view.%20The%20property%20features%20elegant%20landscaping%20with%20tropical%20plants%2C%20a%20spacious%20terrace%2C%20and%20premium%20outdoor%20furniture.%20The%20image%20captures%20the%20property%20during%20sunset%20with%20warm%20golden%20lighting%20creating%20a%20sophisticated%20and%20high-end%20atmosphere.&width=600&height=400&seq=prop1&orientation=landscape" alt="Luxury Villa" class="w-full h-64 object-cover object-top">
-                        <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">Dijual</div>
-                    </div>
+                    <a href="{{ route('properti.show', $property->id) }}" class="relative block">
+                        @if($property->hasMedia('gambar_properti'))
+                            <img src="{{ $property->getFirstMediaUrl('gambar_properti', 'thumb') }}" alt="{{ $property->nama_properti }}" class="w-full h-64 object-cover object-top">
+                        @else
+                            <div class="w-full h-64 bg-gray-200 flex items-center justify-center">
+                                <i class="ri-image-line text-4xl text-gray-400"></i>
+                            </div>
+                        @endif
+                        <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+                            {{ ucfirst($property->status) }}
+                        </div>
+                    </a>
                     <div class="p-6">
                         <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold">Villa Serenity</h3>
-                            <p class="text-primary font-bold text-lg">Rp 12,5 Miliar</p>
+                            <a href="{{ route('properti.show', $property->id) }}" class="text-xl font-bold hover:text-primary">{{ $property->nama_properti }}</a>
+                            <p class="text-primary font-bold text-lg">
+                                Rp {{ number_format($property->harga, 0, ',', '.') }}
+                                @if($property->satuan_harga == 'juta')
+                                    Juta
+                                @elseif($property->satuan_harga == 'miliar')
+                                    Miliar
+                                @elseif($property->satuan_harga == 'perbulan')
+                                    /bulan
+                                @elseif($property->satuan_harga == 'pertahun')
+                                    /tahun
+                                @endif
+                            </p>
                         </div>
-                        <p class="text-gray-600 mb-4">Jl. Pantai Berawa No. 88, Canggu, Bali</p>
+                        <p class="text-gray-600 mb-4">{{ $property->lokasi }}</p>
                         <div class="flex justify-between text-gray-500 border-t pt-4">
+                            @if($property->tipe_properti != 'tanah')
                             <div class="flex items-center">
                                 <div class="w-5 h-5 flex items-center justify-center mr-2">
                                     <i class="ri-hotel-bed-line"></i>
                                 </div>
-                                <span>5 Kamar</span>
+                                <span>{{ $property->jumlah_kamar }} Kamar</span>
                             </div>
+                            @endif
                             <div class="flex items-center">
                                 <div class="w-5 h-5 flex items-center justify-center mr-2">
                                     <i class="ri-home-4-line"></i>
                                 </div>
-                                <span>650 m²</span>
+                                <span>{{ $property->luas_bangunan }} m²</span>
                             </div>
+                            @if($property->tipe_properti != 'tanah')
                             <div class="flex items-center">
                                 <div class="w-5 h-5 flex items-center justify-center mr-2">
                                     <i class="ri-car-line"></i>
                                 </div>
-                                <span>3 Garasi</span>
+                                <span>{{ $property->jumlah_parkir }} Parkir</span>
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>
-
-                <!-- Property 2 -->
-                <div class="property-card bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-300">
-                    <div class="relative">
-                        <img src="https://readdy.ai/api/search-image?query=A%20modern%20luxury%20apartment%20with%20an%20open-concept%20design%2C%20featuring%20floor-to-ceiling%20windows%20with%20panoramic%20city%20views.%20The%20interior%20showcases%20high-end%20finishes%2C%20contemporary%20furniture%2C%20and%20a%20sleek%20kitchen%20with%20marble%20countertops.%20The%20living%20space%20flows%20seamlessly%20to%20a%20private%20balcony%20with%20glass%20railings.%20The%20image%20captures%20the%20space%20during%20evening%20with%20city%20lights%20visible%2C%20creating%20a%20sophisticated%20urban%20luxury%20atmosphere.&width=600&height=400&seq=prop2&orientation=landscape" alt="Luxury Apartment" class="w-full h-64 object-cover object-top">
-                        <div class="absolute top-4 left-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">Disewa</div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold">Apartemen Sky Residence</h3>
-                            <p class="text-primary font-bold text-lg">Rp 45 Juta/bulan</p>
-                        </div>
-                        <p class="text-gray-600 mb-4">Jl. Jend. Sudirman Kav. 52-53, SCBD, Jakarta</p>
-                        <div class="flex justify-between text-gray-500 border-t pt-4">
-                            <div class="flex items-center">
-                                <div class="w-5 h-5 flex items-center justify-center mr-2">
-                                    <i class="ri-hotel-bed-line"></i>
-                                </div>
-                                <span>3 Kamar</span>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-5 h-5 flex items-center justify-center mr-2">
-                                    <i class="ri-home-4-line"></i>
-                                </div>
-                                <span>210 m²</span>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-5 h-5 flex items-center justify-center mr-2">
-                                    <i class="ri-car-line"></i>
-                                </div>
-                                <span>2 Parkir</span>
-                            </div>
-                        </div>
-                    </div>
+                @empty
+                <div class="col-span-3 text-center py-10">
+                    <p class="text-gray-500">Belum ada properti yang ditampilkan. Silakan cek kembali nanti.</p>
                 </div>
-
-                <!-- Property 3 -->
-                <div class="property-card bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-300">
-                    <div class="relative">
-                        <img src="https://readdy.ai/api/search-image?query=A%20luxurious%20modern%20mansion%20with%20elegant%20architecture%2C%20featuring%20a%20grand%20entrance%20with%20double%20doors%20and%20columns.%20The%20property%20showcases%20expansive%20windows%2C%20multiple%20balconies%2C%20and%20a%20perfectly%20manicured%20garden%20with%20a%20fountain.%20The%20exterior%20combines%20stone%20and%20glass%20elements%20with%20sophisticated%20lighting.%20The%20image%20captures%20the%20property%20during%20daytime%20with%20perfect%20blue%20skies%2C%20creating%20an%20atmosphere%20of%20exclusivity%20and%20opulence.&width=600&height=400&seq=prop3&orientation=landscape" alt="Luxury Mansion" class="w-full h-64 object-cover object-top">
-                        <div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">Dijual</div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-xl font-bold">Mansion Pondok Indah</h3>
-                            <p class="text-primary font-bold text-lg">Rp 32 Miliar</p>
-                        </div>
-                        <p class="text-gray-600 mb-4">Jl. Metro Pondok Indah, Jakarta Selatan</p>
-                        <div class="flex justify-between text-gray-500 border-t pt-4">
-                            <div class="flex items-center">
-                                <div class="w-5 h-5 flex items-center justify-center mr-2">
-                                    <i class="ri-hotel-bed-line"></i>
-                            </div>
-                                <span>7 Kamar</span>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-5 h-5 flex items-center justify-center mr-2">
-                                    <i class="ri-home-4-line"></i>
-                            </div>
-                                <span>1200 m²</span>
-                            </div>
-                            <div class="flex items-center">
-                                <div class="w-5 h-5 flex items-center justify-center mr-2">
-                                    <i class="ri-car-line"></i>
-                            </div>
-                                <span>5 Garasi</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforelse
             </div>
 
             <div class="text-center mt-12">
-                <button class="bg-white border border-primary text-primary px-8 py-3 !rounded-button whitespace-nowrap hover:bg-primary hover:text-white transition-all font-medium">Lihat Semua Properti</button>
+                <a href="{{ route('properti.index') }}" class="bg-white border border-primary text-primary px-8 py-3 !rounded-button whitespace-nowrap hover:bg-primary hover:text-white transition-all font-medium">Lihat Semua Properti</a>
             </div>
         </div>
     </section>
@@ -535,6 +588,71 @@
         .back-to-top.show {
             opacity: 1;
             visibility: visible;
+        }
+
+        /* Swiper Hero Carousel Styles */
+        .swiper-hero-section {
+            --swiper-theme-color: #D4AF37;
+            --swiper-pagination-bullet-inactive-color: #ffffff;
+            --swiper-pagination-bullet-inactive-opacity: 0.5;
+        }
+
+        .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            opacity: var(--swiper-pagination-bullet-inactive-opacity);
+            background: var(--swiper-pagination-bullet-inactive-color);
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: var(--swiper-theme-color);
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-swiper .swiper-slide {
+            transition: opacity 0.4s ease;
+        }
+
+        .hero-swiper .swiper-pagination {
+            bottom: 30px;
+        }
+
+        /* Improved Transition Styles */
+        .hero-swiper .swiper-slide-active {
+            z-index: 1;
+        }
+
+        .hero-swiper .swiper-slide {
+            opacity: 0 !important;
+            transition: opacity 1s ease;
+        }
+
+        .hero-swiper .swiper-slide-active,
+        .hero-swiper .swiper-slide-duplicate-active {
+            opacity: 1 !important;
+        }
+
+        .hero-swiper .swiper-slide .absolute {
+            transition: transform 1.2s ease, opacity 1s ease;
+            transform: scale(1.05);
+            opacity: 0;
+        }
+
+        .hero-swiper .swiper-slide-active .absolute,
+        .hero-swiper .swiper-slide-duplicate-active .absolute {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        @media (max-width: 640px) {
+            .hero-swiper .swiper-pagination {
+                bottom: 20px;
+            }
         }
 
     </style>

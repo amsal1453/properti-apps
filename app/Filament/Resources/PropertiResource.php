@@ -378,7 +378,7 @@ class PropertiResource extends Resource
                             ->label('')
                             ->height(120)
                             ->columnSpanFull()
-                            ->extraImgAttributes(['class' => 'grid grid-cols-3 gap-2']),
+                            ->extraImgAttributes(['class' => 'grid grid-cols-3 gap-2']), 
                     ]),
 
                 Infolists\Components\Section::make('Lokasi di Peta')

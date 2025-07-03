@@ -39,7 +39,7 @@ class LatestPermintaanInfo extends BaseWidget
                         'dibatalkan' => 'danger',
                         default => 'gray',
                     }),
-                Tables\Columns\TextColumn::make('tanggal_kirim')
+            Tables\Columns\TextColumn::make('created_at')
                     ->label('Tanggal Kirim')
                     ->dateTime()
                     ->sortable(),
@@ -50,8 +50,8 @@ class LatestPermintaanInfo extends BaseWidget
                     ->url(fn(PermintaanInfo $record): string => route('filament.admin.resources.permintaan-infos.edit', $record))
                     ->icon('heroicon-m-eye'),
             ])
-            ->defaultSort('tanggal_kirim', 'desc')
+            ->defaultSort('created_at', 'desc')
             ->paginated([5, 10, 25])
-            ->query(PermintaanInfo::query()->latest('tanggal_kirim')->limit(5));
+            ->query(PermintaanInfo::query()->latest('created_at')->limit(5));
     }
 }

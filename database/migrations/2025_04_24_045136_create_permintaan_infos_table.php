@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('permintaan_infos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('properti_id')->constrained('propertis')->cascadeOnDelete();
+            $table->foreignId('properti_id')->nullable()->constrained('propertis')->nullOnDelete();
             $table->string('nama');
             $table->string('email');
+            $table->string('nomor_telepon')->nullable();
+            $table->string('subjek')->nullable();
             $table->text('pesan');
-            $table->string('status')->default('belum dibaca');
-            $table->timestamp('tanggal_kirim')->useCurrent();
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

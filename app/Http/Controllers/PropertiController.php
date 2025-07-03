@@ -51,9 +51,9 @@ class PropertiController extends Controller
         ]);
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $property = Properti::findOrFail($id);
+        $property = Properti::where('slug', $slug)->firstOrFail();
 
         return view('properti.show', [
             'property' => $property

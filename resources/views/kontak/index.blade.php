@@ -96,36 +96,53 @@
                     <div class="bg-white rounded-lg shadow-sm p-6">
                         <h2 class="text-2xl font-bold text-gray-900 mb-6">Kirim Pesan</h2>
 
-                        <form>
+                        <form action="{{ route('kontak.kirim') }}" method="POST">
+                            @csrf
+
+                            @if(session('success'))
+                                <div class="mb-6 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                                 <div>
-                                    <label for="name" class="block text-gray-700 font-medium mb-2">Nama Lengkap *</label>
-                                    <input type="text" id="name" name="name" class="w-full border border-gray-300 rounded px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary" required>
+                                    <label for="nama" class="block text-gray-700 font-medium mb-2">Nama Lengkap *</label>
+                                    <input type="text" id="nama" name="nama" value="{{ old('nama') }}" class="w-full border @error('nama') border-red-500 @else border-gray-300 @enderror rounded px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary" required>
+                                    @error('nama')
+                                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div>
                                     <label for="email" class="block text-gray-700 font-medium mb-2">Email *</label>
-                                    <input type="email" id="email" name="email" class="w-full border border-gray-300 rounded px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary" required>
+                                    <input type="email" id="email" name="email" value="{{ old('email') }}" class="w-full border @error('email') border-red-500 @else border-gray-300 @enderror rounded px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary" required>
+                                    @error('email')
+                                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div>
                                     <label for="phone" class="block text-gray-700 font-medium mb-2">Nomor Telepon</label>
-                                    <input type="tel" id="phone" name="phone" class="w-full border border-gray-300 rounded px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary">
+                                    <input type="tel" id="phone" name="phone" value="{{ old('phone') }}" class="w-full border border-gray-300 rounded px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary">
                                 </div>
                                 <div>
                                     <label for="subject" class="block text-gray-700 font-medium mb-2">Subjek *</label>
                                     <select id="subject" name="subject" class="w-full border border-gray-300 rounded px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white" required>
                                         <option value="" disabled selected>Pilih subjek</option>
-                                        <option value="general">Pertanyaan Umum</option>
-                                        <option value="property">Informasi Properti</option>
-                                        <option value="appointment">Janji Temu</option>
-                                        <option value="feedback">Umpan Balik</option>
-                                        <option value="other">Lainnya</option>
+                                        <option value="general" {{ old('subject') == 'general' ? 'selected' : '' }}>Pertanyaan Umum</option>
+                                        <option value="property" {{ old('subject') == 'property' ? 'selected' : '' }}>Informasi Properti</option>
+                                        <option value="appointment" {{ old('subject') == 'appointment' ? 'selected' : '' }}>Janji Temu</option>
+                                        <option value="feedback" {{ old('subject') == 'feedback' ? 'selected' : '' }}>Umpan Balik</option>
+                                        <option value="other" {{ old('subject') == 'other' ? 'selected' : '' }}>Lainnya</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="mb-6">
-                                <label for="message" class="block text-gray-700 font-medium mb-2">Pesan *</label>
-                                <textarea id="message" name="message" rows="6" class="w-full border border-gray-300 rounded px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary" required></textarea>
+                                <label for="pesan" class="block text-gray-700 font-medium mb-2">Pesan *</label>
+                                <textarea id="pesan" name="pesan" rows="6" class="w-full border @error('pesan') border-red-500 @else border-gray-300 @enderror rounded px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary" required>{{ old('pesan') }}</textarea>
+                                @error('pesan')
+                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                @enderror
                             </div>
 
                             <div class="flex items-start mb-6">

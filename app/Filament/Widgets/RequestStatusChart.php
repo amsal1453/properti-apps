@@ -30,29 +30,29 @@ class RequestStatusChart extends ChartWidget
 
             // Count pending requests
             $pendingCount = PermintaanInfo::where('status', 'pending')
-                ->whereMonth('tanggal_kirim', $date->month)
-                ->whereYear('tanggal_kirim', $date->year)
+                ->whereMonth('created_at', $date->month)
+                ->whereYear('created_at', $date->year)
                 ->count();
             $pendingData->push($pendingCount);
 
             // Count in-progress requests
             $diprosesCount = PermintaanInfo::where('status', 'diproses')
-                ->whereMonth('tanggal_kirim', $date->month)
-                ->whereYear('tanggal_kirim', $date->year)
+                ->whereMonth('created_at', $date->month)
+                ->whereYear('created_at', $date->year)
                 ->count();
             $diprosesData->push($diprosesCount);
 
             // Count completed requests
             $selesaiCount = PermintaanInfo::where('status', 'selesai')
-                ->whereMonth('tanggal_kirim', $date->month)
-                ->whereYear('tanggal_kirim', $date->year)
+                ->whereMonth('created_at', $date->month)
+                ->whereYear('created_at', $date->year)
                 ->count();
             $selesaiData->push($selesaiCount);
 
             // Count cancelled requests
             $dibatalkanCount = PermintaanInfo::where('status', 'dibatalkan')
-                ->whereMonth('tanggal_kirim', $date->month)
-                ->whereYear('tanggal_kirim', $date->year)
+                ->whereMonth('created_at', $date->month)
+                ->whereYear('created_at', $date->year)
                 ->count();
             $dibatalkanData->push($dibatalkanCount);
         }

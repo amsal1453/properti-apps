@@ -14,9 +14,9 @@ class ArtikelController extends Controller
     }
 
     // Menampilkan detail artikel
-    public function show($id)
+    public function show($slug)
     {
-        $artikel = Article::findOrFail($id);
+        $artikel = Article::where('slug', $slug)->firstOrFail();
         return view('artikel.show', compact('artikel'));
     }
 }

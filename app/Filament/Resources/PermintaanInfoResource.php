@@ -31,11 +31,19 @@ class PermintaanInfoResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('nama')
                     ->required()
-                    ->maxLength(255),
+                ->maxLength(255)
+                ->label('Nama Lengkap'),
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->required()
                     ->maxLength(255),
+            Forms\Components\TextInput::make('nomor_telepon')
+                ->tel()
+                ->label('Nomor Telepon')
+                ->maxLength(20),
+            Forms\Components\TextInput::make('subjek')
+                ->label('Subjek')
+                ->maxLength(255),
                 Forms\Components\Textarea::make('pesan')
                     ->required()
                     ->maxLength(65535)
@@ -48,13 +56,10 @@ class PermintaanInfoResource extends Resource
                         'dibatalkan' => 'Dibatalkan'
                     ])
                     ->required()
-                    ->default('pending'),
-                Forms\Components\DateTimePicker::make('tanggal_kirim')
-                    ->required()
-                    ->default(now()),
+                ->default('pending'),
                 Forms\Components\Select::make('properti_id')
                     ->relationship('properti', 'nama_properti')
-                    ->required()
+                ->nullable()
                     ->searchable()
                     ->preload()
                     ->label('Properti'),
@@ -66,15 +71,22 @@ class PermintaanInfoResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('nama')
+                ->label('Nama Lengkap')
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable()
                     ->sortable(),
+            Tables\Columns\TextColumn::make('nomor_telepon')
+                ->label('Nomor Telepon')
+                ->searchable(),
+            Tables\Columns\TextColumn::make('subjek')
+                ->searchable(),
                 Tables\Columns\TextColumn::make('properti.nama_properti')
                     ->label('Properti')
                     ->searchable()
-                    ->sortable(),
+                ->sortable()
+                ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\SelectColumn::make('status')
                     ->options([
                         'pending' => 'Pending',
@@ -82,10 +94,7 @@ class PermintaanInfoResource extends Resource
                         'selesai' => 'Selesai',
                         'dibatalkan' => 'Dibatalkan'
                     ])
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('tanggal_kirim')
-                    ->dateTime()
-                    ->sortable(),
+                ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -103,7 +112,7 @@ class PermintaanInfoResource extends Resource
                         'selesai' => 'Selesai',
                         'dibatalkan' => 'Dibatalkan'
                     ]),
-                Tables\Filters\Filter::make('tanggal_kirim')
+            Tables\Filters\Filter::make('created_at')
                     ->form([
                         Forms\Components\DatePicker::make('from'),
                         Forms\Components\DatePicker::make('until'),
@@ -112,11 +121,11 @@ class PermintaanInfoResource extends Resource
                         return $query
                             ->when(
                                 $data['from'],
-                                fn(Builder $query, $date): Builder => $query->whereDate('tanggal_kirim', '>=', $date),
+                    fn(Builder $query, $date): Builder => $query->whereDate('created_at', '>=', $date),
                             )
                             ->when(
                                 $data['until'],
-                                fn(Builder $query, $date): Builder => $query->whereDate('tanggal_kirim', '<=', $date),
+                    fn(Builder $query, $date): Builder => $query->whereDate('created_at', '<=', $date),
                             );
                     })
             ])

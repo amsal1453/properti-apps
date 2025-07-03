@@ -14,6 +14,8 @@ class PermintaanInfoFactory extends Factory
         return [
             'nama' => fake()->name(),
             'email' => fake()->safeEmail(),
+            'nomor_telepon' => fake()->phoneNumber(),
+            'subjek' => fake()->sentence(),
             'pesan' => fake()->paragraph(),
             'status' => fake()->randomElement($status),
             'tanggal_kirim' => fake()->dateTimeBetween('-3 months', 'now'),

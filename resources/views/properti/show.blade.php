@@ -211,7 +211,7 @@
                                         /tahun
                                     @endif
                                 </p>
-                                <a href="{{ route('properti.show', $similarProperty->id) }}" class="text-primary text-sm hover:underline">Lihat Detail</a>
+                                <a href="{{ route('properti.show', $similarProperty->slug) }}" class="text-primary text-sm hover:underline">Lihat Detail</a>
                             </div>
                         </div>
                         @empty

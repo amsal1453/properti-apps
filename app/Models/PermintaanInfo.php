@@ -10,7 +10,7 @@ class PermintaanInfo extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['properti_id', 'nama', 'email', 'pesan', 'status', 'tanggal_kirim'];
+    protected $fillable = ['properti_id', 'nama', 'email', 'nomor_telepon', 'subjek', 'pesan', 'status'];
 
     public function properti(): BelongsTo
     {

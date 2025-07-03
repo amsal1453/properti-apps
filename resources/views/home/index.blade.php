@@ -181,7 +181,7 @@
                 @forelse($featuredProperties as $property)
                 <!-- Property Card -->
                 <div class="property-card bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-300">
-                    <a href="{{ route('properti.show', $property->id) }}" class="relative block">
+                    <a href="{{ route('properti.show', $property->slug) }}" class="relative block">
                         @if($property->hasMedia('gambar_properti'))
                             <img src="{{ $property->getFirstMediaUrl('gambar_properti', 'thumb') }}" alt="{{ $property->nama_properti }}" class="w-full h-64 object-cover object-top">
                         @else
@@ -195,7 +195,7 @@
                     </a>
                     <div class="p-6">
                         <div class="flex justify-between items-start mb-2">
-                            <a href="{{ route('properti.show', $property->id) }}" class="text-xl font-bold hover:text-primary">{{ $property->nama_properti }}</a>
+                            <a href="{{ route('properti.show', $property->slug) }}" class="text-xl font-bold hover:text-primary">{{ $property->nama_properti }}</a>
                             <p class="text-primary font-bold text-lg">
                                 Rp {{ number_format($property->harga, 0, ',', '.') }}
                                 @if($property->satuan_harga == 'juta')
@@ -334,69 +334,40 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Article 1 -->
+                @forelse($recentArticles as $article)
+                <!-- Article Card -->
                 <div class="article-card bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-300">
-                    <img src="https://readdy.ai/api/search-image?query=A%20sophisticated%20real%20estate%20investment%20concept%20image%20showing%20modern%20luxury%20buildings%2C%20financial%20charts%20and%20graphs%2C%20and%20investment%20documents.%20The%20scene%20includes%20elements%20like%20a%20calculator%2C%20property%20blueprints%2C%20and%20a%20tablet%20displaying%20real%20estate%20analytics.%20The%20composition%20has%20a%20professional%20business%20atmosphere%20with%20a%20clean%2C%20modern%20aesthetic%20perfect%20for%20a%20real%20estate%20investment%20article.&width=600&height=400&seq=art1&orientation=landscape" alt="Investment Tips" class="w-full h-56 object-cover object-top">
+                    @if($article->gambar)
+                        <img src="{{ asset('storage/' . $article->gambar) }}" alt="{{ $article->judul }}" class="w-full h-56 object-cover object-top">
+                    @else
+                        <div class="w-full h-56 bg-gray-200 flex items-center justify-center">
+                            <i class="ri-image-line text-4xl text-gray-400"></i>
+                        </div>
+                    @endif
                     <div class="p-6">
                         <div class="flex items-center mb-4">
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Investasi</span>
-                            <span class="text-gray-400 text-sm ml-4">29 April 2025</span>
-                            <span class="text-gray-400 text-sm ml-4">5 menit baca</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">{{ ucfirst($article->kategori) }}</span>
+                            <span class="text-gray-400 text-sm ml-4">{{ \Carbon\Carbon::parse($article->tanggal_posting)->format('j M Y') }}</span>
                         </div>
-                        <h3 class="text-xl font-bold mb-3">10 Tips Investasi Properti Mewah yang Menguntungkan</h3>
-                        <p class="text-gray-600 mb-4">Panduan lengkap untuk memaksimalkan return investasi pada properti premium di lokasi strategis.</p>
-                        <a href="#" class="text-primary font-medium inline-flex items-center hover:underline">
+                        <h3 class="text-xl font-bold mb-3">{{ $article->judul }}</h3>
+                        <p class="text-gray-600 mb-4">{{ $article->excerpt ?? \Illuminate\Support\Str::limit(strip_tags($article->konten), 100) }}</p>
+                        <a href="{{ route('artikel.show', $article->slug) }}" class="text-primary font-medium inline-flex items-center hover:underline">
                             Baca Selengkapnya
                             <div class="w-5 h-5 flex items-center justify-center ml-1">
                                 <i class="ri-arrow-right-line"></i>
-                    </div>
-                </a>
-                    </div>
-                </div>
-
-                <!-- Article 2 -->
-                <div class="article-card bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-300">
-                    <img src="https://readdy.ai/api/search-image?query=A%20luxurious%20interior%20design%20concept%20showing%20an%20elegant%20living%20room%20with%20high%20ceilings%2C%20floor-to-ceiling%20windows%20with%20spectacular%20views%2C%20designer%20furniture%2C%20and%20sophisticated%20decor%20elements.%20The%20space%20features%20a%20harmonious%20color%20palette%20with%20neutral%20tones%20accented%20by%20gold%20details%2C%20custom%20lighting%20fixtures%2C%20and%20premium%20materials%20like%20marble%20and%20wood.%20The%20composition%20has%20a%20clean%2C%20modern%20aesthetic%20perfect%20for%20a%20luxury%20interior%20design%20article.&width=600&height=400&seq=art2&orientation=landscape" alt="Interior Design" class="w-full h-56 object-cover object-top">
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">Desain Interior</span>
-                            <span class="text-gray-400 text-sm ml-4">25 April 2025</span>
-                            <span class="text-gray-400 text-sm ml-4">7 menit baca</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Tren Desain Interior Mewah 2025 yang Wajib Anda Ketahui</h3>
-                        <p class="text-gray-600 mb-4">Eksplorasi tren desain terkini yang menggabungkan kemewahan, kenyamanan, dan keberlanjutan.</p>
-                        <a href="#" class="text-primary font-medium inline-flex items-center hover:underline">
-                            Baca Selengkapnya
-                            <div class="w-5 h-5 flex items-center justify-center ml-1">
-                                <i class="ri-arrow-right-line"></i>
-                    </div>
-                </a>
+                            </div>
+                        </a>
                     </div>
                 </div>
-
-                <!-- Article 3 -->
-                <div class="article-card bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-300">
-                    <img src="https://readdy.ai/api/search-image?query=A%20beautiful%20Bali%20luxury%20villa%20scene%20showing%20a%20stunning%20private%20villa%20with%20traditional%20Balinese%20architectural%20elements%20blended%20with%20modern%20luxury.%20The%20image%20features%20an%20infinity%20pool%20overlooking%20lush%20tropical%20gardens%2C%20open-air%20living%20spaces%20with%20elegant%20furnishings%2C%20and%20natural%20stone%20elements.%20The%20scene%20is%20captured%20during%20sunset%20with%20warm%20golden%20lighting%20creating%20a%20serene%20and%20exclusive%20atmosphere%20perfect%20for%20a%20Bali%20luxury%20property%20article.&width=600&height=400&seq=art3&orientation=landscape" alt="Bali Property" class="w-full h-56 object-cover object-top">
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Destinasi</span>
-                            <span class="text-gray-400 text-sm ml-4">20 April 2025</span>
-                            <span class="text-gray-400 text-sm ml-4">6 menit baca</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3">Mengapa Bali Tetap Menjadi Surga Investasi Properti</h3>
-                        <p class="text-gray-600 mb-4">Analisis mendalam tentang daya tarik Bali sebagai lokasi investasi properti premium yang berkelanjutan.</p>
-                        <a href="#" class="text-primary font-medium inline-flex items-center hover:underline">
-                            Baca Selengkapnya
-                            <div class="w-5 h-5 flex items-center justify-center ml-1">
-                                <i class="ri-arrow-right-line"></i>
-                    </div>
-                </a>
-                    </div>
+                @empty
+                <div class="col-span-1 md:col-span-3 text-center py-10">
+                    <p class="text-gray-500">Belum ada artikel yang ditampilkan. Silakan cek kembali nanti.</p>
                 </div>
+                @endforelse
             </div>
 
             <div class="text-center mt-12">
-                <button class="bg-white border border-primary text-primary px-8 py-3 !rounded-button whitespace-nowrap hover:bg-primary hover:text-white transition-all font-medium">Lihat Semua Artikel</button>
+                <a href="{{ route('artikel.index') }}" class="bg-white border border-primary text-primary px-8 py-3 !rounded-button whitespace-nowrap hover:bg-primary hover:text-white transition-all font-medium inline-block">Lihat Semua Artikel</a>
             </div>
         </div>
     </section>
@@ -411,33 +382,47 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <div>
-                    <form>
+                    <form action="{{ route('kontak.kirim') }}" method="POST">
+                        @csrf
+
+                        @if(session('success'))
+                            <div class="mb-6 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                             <div>
-                                <label for="name" class="block text-gray-700 font-medium mb-2">Nama Lengkap</label>
-                                <input type="text" id="name" class="w-full bg-white border border-gray-200 rounded px-4 py-3 focus:outline-none focus:border-primary" placeholder="Masukkan nama lengkap">
+                                <label for="nama" class="block text-gray-700 font-medium mb-2">Nama Lengkap *</label>
+                                <input type="text" id="nama" name="nama" value="{{ old('nama') }}" class="w-full bg-white border @error('nama') border-red-500 @else border-gray-200 @enderror rounded px-4 py-3 focus:outline-none focus:border-primary" placeholder="Masukkan nama lengkap" required>
+                                @error('nama')
+                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div>
-                                <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
-                                <input type="email" id="email" class="w-full bg-white border border-gray-200 rounded px-4 py-3 focus:outline-none focus:border-primary" placeholder="Masukkan email">
+                                <label for="email" class="block text-gray-700 font-medium mb-2">Email *</label>
+                                <input type="email" id="email" name="email" value="{{ old('email') }}" class="w-full bg-white border @error('email') border-red-500 @else border-gray-200 @enderror rounded px-4 py-3 focus:outline-none focus:border-primary" placeholder="Masukkan email" required>
+                                @error('email')
+                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="mb-6">
                             <label for="phone" class="block text-gray-700 font-medium mb-2">Nomor Telepon</label>
-                            <input type="tel" id="phone" class="w-full bg-white border border-gray-200 rounded px-4 py-3 focus:outline-none focus:border-primary" placeholder="Masukkan nomor telepon">
-                </div>
+                            <input type="tel" id="phone" name="phone" value="{{ old('phone') }}" class="w-full bg-white border border-gray-200 rounded px-4 py-3 focus:outline-none focus:border-primary" placeholder="Masukkan nomor telepon">
+                        </div>
 
                         <div class="mb-6">
-                            <label for="interest" class="block text-gray-700 font-medium mb-2">Saya Tertarik Dengan</label>
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Saya Tertarik Dengan</label>
                             <div class="relative">
-                                <select id="interest" class="w-full bg-white border border-gray-200 rounded px-4 py-3 appearance-none focus:outline-none focus:border-primary pr-8">
-                                    <option>Pilih Kategori</option>
-                                    <option>Membeli Properti</option>
-                                    <option>Menjual Properti</option>
-                                    <option>Menyewa Properti</option>
-                                    <option>Investasi Properti</option>
-                                    <option>Konsultasi</option>
+                                <select id="subject" name="subject" class="w-full bg-white border border-gray-200 rounded px-4 py-3 appearance-none focus:outline-none focus:border-primary pr-8">
+                                    <option value="" {{ old('subject') == '' ? 'selected' : '' }}>Pilih Kategori</option>
+                                    <option value="Membeli Properti" {{ old('subject') == 'Membeli Properti' ? 'selected' : '' }}>Membeli Properti</option>
+                                    <option value="Menjual Properti" {{ old('subject') == 'Menjual Properti' ? 'selected' : '' }}>Menjual Properti</option>
+                                    <option value="Menyewa Properti" {{ old('subject') == 'Menyewa Properti' ? 'selected' : '' }}>Menyewa Properti</option>
+                                    <option value="Investasi Properti" {{ old('subject') == 'Investasi Properti' ? 'selected' : '' }}>Investasi Properti</option>
+                                    <option value="Konsultasi" {{ old('subject') == 'Konsultasi' ? 'selected' : '' }}>Konsultasi</option>
                                 </select>
                                 <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                                     <i class="ri-arrow-down-s-line text-gray-500"></i>
@@ -446,14 +431,17 @@
                         </div>
 
                         <div class="mb-6">
-                            <label for="message" class="block text-gray-700 font-medium mb-2">Pesan</label>
-                            <textarea id="message" rows="4" class="w-full bg-white border border-gray-200 rounded px-4 py-3 focus:outline-none focus:border-primary" placeholder="Tuliskan pesan atau pertanyaan Anda"></textarea>
+                            <label for="pesan" class="block text-gray-700 font-medium mb-2">Pesan *</label>
+                            <textarea id="pesan" name="pesan" rows="4" class="w-full bg-white border @error('pesan') border-red-500 @else border-gray-200 @enderror rounded px-4 py-3 focus:outline-none focus:border-primary" placeholder="Tuliskan pesan atau pertanyaan Anda" required>{{ old('pesan') }}</textarea>
+                            @error('pesan')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
 
                         <div class="mb-6 flex items-start">
-                            <input type="checkbox" id="agree" class="custom-checkbox mt-1">
-                            <label for="agree" class="ml-3 text-gray-600 text-sm">Saya setuju untuk menerima informasi dan penawaran terkait properti melalui email dan telepon.</label>
-                    </div>
+                            <input type="checkbox" id="privacy-policy" name="privacy-policy" class="custom-checkbox mt-1" required>
+                            <label for="privacy-policy" class="ml-3 text-gray-600 text-sm">Saya menyetujui penggunaan data pribadi untuk keperluan komunikasi.</label>
+                        </div>
 
                         <button type="submit" class="bg-primary text-white px-8 py-3 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all font-medium w-full md:w-auto">Kirim Pesan</button>
                     </form>

@@ -80,7 +80,7 @@
                 @forelse($properties as $property)
                 <!-- Property Card -->
                 <div class="bg-white rounded shadow-sm overflow-hidden transition-transform hover:shadow-md hover:-translate-y-1">
-                    <a href="{{ route('properti.show', $property->id) }}" class="relative block">
+                    <a href="{{ route('properti.show', $property->slug) }}" class="relative block">
                         @if($property->hasMedia('gambar_properti'))
                             <img src="{{ $property->getFirstMediaUrl('gambar_properti', 'thumb') }}" alt="{{ $property->nama_properti }}" class="w-full h-56 object-cover object-top">
                         @else
@@ -93,7 +93,7 @@
                         </span>
                     </a>
                     <div class="p-4">
-                        <a href="{{ route('properti.show', $property->id) }}" class="text-lg font-semibold text-gray-900 hover:text-primary mb-1 block">{{ $property->nama_properti }}</a>
+                        <a href="{{ route('properti.show', $property->slug) }}" class="text-lg font-semibold text-gray-900 hover:text-primary mb-1 block">{{ $property->nama_properti }}</a>
                         <p class="text-primary text-xl font-bold mb-2">
                             Rp {{ number_format($property->harga, 0, ',', '.') }}
                             @if($property->satuan_harga == 'juta')

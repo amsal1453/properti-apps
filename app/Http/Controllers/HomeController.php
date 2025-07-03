@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Properti;
 use Illuminate\Http\Request;
 
@@ -27,8 +28,14 @@ class HomeController extends Controller
             $featuredProperties = $featuredProperties->concat($regularProperties);
         }
 
+        // Get recent articles
+        $recentArticles = Article::latest()
+            ->take(3)
+            ->get();
+
         return view('home.index', [
-            'featuredProperties' => $featuredProperties
+            'featuredProperties' => $featuredProperties,
+            'recentArticles' => $recentArticles
         ]);
     }
 }

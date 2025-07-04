@@ -3,6 +3,46 @@
 @section('title', 'Kontak Kami')
 
 @section('content')
+    <style>
+        .custom-checkbox {
+            appearance: none;
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 2px solid #E6E6E6;
+            border-radius: 0.25rem;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .custom-checkbox:checked {
+            background-color: var(--samudra-red);
+            border-color: var(--samudra-red);
+        }
+
+        .custom-checkbox:checked::after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 2px;
+            width: 6px;
+            height: 12px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .custom-select {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+        }
+
+        .!rounded-button {
+            border-radius: 9999px !important;
+        }
+    </style>
+
     <main class="pt-28 pb-20">
         <!-- Hero Section -->
         <div class="bg-gray-50 py-12 mb-12">
@@ -24,46 +64,42 @@
 
                         <div class="space-y-6">
                             <div class="flex items-start">
-                                <div class="flex items-center justify-center bg-primary/10 rounded-lg w-12 h-12 mr-4">
-                                    <i class="ri-map-pin-line text-xl text-primary"></i>
+                                <div class="flex items-center justify-center bg-samudra-red/10 rounded-lg w-12 h-12 mr-4">
+                                    <i class="ri-map-pin-line text-xl text-samudra-red"></i>
                                 </div>
                                 <div>
                                     <h3 class="font-semibold text-gray-900 mb-1">Alamat Kantor</h3>
-                                    <p class="text-gray-600">Jl. Properti Indah No. 123, Menteng, Jakarta Pusat, 10310</p>
+                                    <p class="text-gray-600">Jl. Tgk Chik Ditiro No.88, Peuniti, Kec. Baiturrahman, Kota Banda Aceh</p>
                                 </div>
                             </div>
 
                             <div class="flex items-start">
-                                <div class="flex items-center justify-center bg-primary/10 rounded-lg w-12 h-12 mr-4">
-                                    <i class="ri-phone-line text-xl text-primary"></i>
+                                <div class="flex items-center justify-center bg-samudra-red/10 rounded-lg w-12 h-12 mr-4">
+                                    <i class="ri-phone-line text-xl text-samudra-red"></i>
                                 </div>
                                 <div>
                                     <h3 class="font-semibold text-gray-900 mb-1">Telepon</h3>
-                                    <p class="text-gray-600">+62 21 5566 7788</p>
-                                    <p class="text-gray-600">+62 812 3456 7890</p>
+                                    <p class="text-gray-600">+62 852-7087-7887</p>
                                 </div>
                             </div>
 
                             <div class="flex items-start">
-                                <div class="flex items-center justify-center bg-primary/10 rounded-lg w-12 h-12 mr-4">
-                                    <i class="ri-mail-line text-xl text-primary"></i>
+                                <div class="flex items-center justify-center bg-samudra-red/10 rounded-lg w-12 h-12 mr-4">
+                                    <i class="ri-mail-line text-xl text-samudra-red"></i>
                                 </div>
                                 <div>
                                     <h3 class="font-semibold text-gray-900 mb-1">Email</h3>
-                                    <p class="text-gray-600">info@propertiku.com</p>
-                                    <p class="text-gray-600">sales@propertiku.com</p>
+                                    <p class="text-gray-600">info@samudraindahproperti.com</p>
                                 </div>
                             </div>
 
                             <div class="flex items-start">
-                                <div class="flex items-center justify-center bg-primary/10 rounded-lg w-12 h-12 mr-4">
-                                    <i class="ri-time-line text-xl text-primary"></i>
+                                <div class="flex items-center justify-center bg-samudra-red/10 rounded-lg w-12 h-12 mr-4">
+                                    <i class="ri-time-line text-xl text-samudra-red"></i>
                                 </div>
                                 <div>
                                     <h3 class="font-semibold text-gray-900 mb-1">Jam Operasional</h3>
-                                    <p class="text-gray-600">Senin - Jumat: 09:00 - 17:00</p>
-                                    <p class="text-gray-600">Sabtu: 09:00 - 15:00</p>
-                                    <p class="text-gray-600">Minggu & Hari Libur: Tutup</p>
+                                    <p class="text-gray-600">Senin - Jumat: 09.00 - 17.00 WIB<br>Sabtu: 09.00 - 15.00 WIB<br>Minggu & Hari Libur: Tutup</p>
                                 </div>
                             </div>
                         </div>
@@ -71,19 +107,19 @@
                         <div class="mt-8">
                             <h3 class="font-semibold text-gray-900 mb-3">Ikuti Kami</h3>
                             <div class="flex space-x-3">
-                                <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-primary hover:text-white transition-colors">
+                                <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-samudra-red hover:text-white transition-colors">
                                     <i class="ri-facebook-fill"></i>
                                 </a>
-                                <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-primary hover:text-white transition-colors">
+                                <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-samudra-red hover:text-white transition-colors">
                                     <i class="ri-instagram-fill"></i>
                                 </a>
-                                <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-primary hover:text-white transition-colors">
+                                <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-samudra-red hover:text-white transition-colors">
                                     <i class="ri-twitter-x-fill"></i>
                                 </a>
-                                <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-primary hover:text-white transition-colors">
+                                <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-samudra-red hover:text-white transition-colors">
                                     <i class="ri-linkedin-fill"></i>
                                 </a>
-                                <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-primary hover:text-white transition-colors">
+                                <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-samudra-red hover:text-white transition-colors">
                                     <i class="ri-youtube-fill"></i>
                                 </a>
                             </div>
@@ -108,38 +144,38 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                                 <div>
                                     <label for="nama" class="block text-gray-700 font-medium mb-2">Nama Lengkap *</label>
-                                    <input type="text" id="nama" name="nama" value="{{ old('nama') }}" class="w-full border @error('nama') border-red-500 @else border-gray-300 @enderror rounded px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary" required>
+                                    <input type="text" id="nama" name="nama" value="{{ old('nama') }}" class="w-full border @error('nama') border-red-500 @else border-gray-300 @enderror rounded px-4 py-3 focus:ring-2 focus:ring-samudra-red focus:border-samudra-red" required>
                                     @error('nama')
                                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div>
                                     <label for="email" class="block text-gray-700 font-medium mb-2">Email *</label>
-                                    <input type="email" id="email" name="email" value="{{ old('email') }}" class="w-full border @error('email') border-red-500 @else border-gray-300 @enderror rounded px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary" required>
+                                    <input type="email" id="email" name="email" value="{{ old('email') }}" class="w-full border @error('email') border-red-500 @else border-gray-300 @enderror rounded px-4 py-3 focus:ring-2 focus:ring-samudra-red focus:border-samudra-red" required>
                                     @error('email')
                                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div>
                                     <label for="phone" class="block text-gray-700 font-medium mb-2">Nomor Telepon</label>
-                                    <input type="tel" id="phone" name="phone" value="{{ old('phone') }}" class="w-full border border-gray-300 rounded px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary">
+                                    <input type="tel" id="phone" name="phone" value="{{ old('phone') }}" class="w-full border border-gray-300 rounded px-4 py-3 focus:ring-2 focus:ring-samudra-red focus:border-samudra-red">
                                 </div>
                                 <div>
                                     <label for="subject" class="block text-gray-700 font-medium mb-2">Subjek *</label>
-                                    <select id="subject" name="subject" class="w-full border border-gray-300 rounded px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white" required>
-                                        <option value="" disabled selected>Pilih subjek</option>
-                                        <option value="general" {{ old('subject') == 'general' ? 'selected' : '' }}>Pertanyaan Umum</option>
-                                        <option value="property" {{ old('subject') == 'property' ? 'selected' : '' }}>Informasi Properti</option>
-                                        <option value="appointment" {{ old('subject') == 'appointment' ? 'selected' : '' }}>Janji Temu</option>
-                                        <option value="feedback" {{ old('subject') == 'feedback' ? 'selected' : '' }}>Umpan Balik</option>
-                                        <option value="other" {{ old('subject') == 'other' ? 'selected' : '' }}>Lainnya</option>
+                                    <select id="subject" name="subject" class="w-full border border-gray-300 rounded px-4 py-3 focus:ring-2 focus:ring-samudra-red focus:border-samudra-red appearance-none bg-white" required>
+                                        <option value="" disabled selected>Pilih Kategori</option>
+                                        <option value="Membeli Properti" {{ old('subject') == 'Membeli Properti' ? 'selected' : '' }}>Membeli Properti</option>
+                                        <option value="Menjual Properti" {{ old('subject') == 'Menjual Properti' ? 'selected' : '' }}>Menjual Properti</option>
+                                        <option value="Menyewa Properti" {{ old('subject') == 'Menyewa Properti' ? 'selected' : '' }}>Menyewa Properti</option>
+                                        <option value="Investasi Properti" {{ old('subject') == 'Investasi Properti' ? 'selected' : '' }}>Investasi Properti</option>
+                                        <option value="Konsultasi" {{ old('subject') == 'Konsultasi' ? 'selected' : '' }}>Konsultasi</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="mb-6">
                                 <label for="pesan" class="block text-gray-700 font-medium mb-2">Pesan *</label>
-                                <textarea id="pesan" name="pesan" rows="6" class="w-full border @error('pesan') border-red-500 @else border-gray-300 @enderror rounded px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary" required>{{ old('pesan') }}</textarea>
+                                <textarea id="pesan" name="pesan" rows="6" class="w-full border @error('pesan') border-red-500 @else border-gray-300 @enderror rounded px-4 py-3 focus:ring-2 focus:ring-samudra-red focus:border-samudra-red" required>{{ old('pesan') }}</textarea>
                                 @error('pesan')
                                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
@@ -147,10 +183,10 @@
 
                             <div class="flex items-start mb-6">
                                 <input type="checkbox" id="privacy-policy" name="privacy-policy" class="custom-checkbox mt-1" required>
-                                <label for="privacy-policy" class="ml-3 text-gray-600">Saya menyetujui <a href="#" class="text-primary hover:underline">kebijakan privasi</a> dan penggunaan data pribadi untuk keperluan komunikasi.</label>
+                                <label for="privacy-policy" class="ml-3 text-gray-600">Saya menyetujui <a href="#" class="text-samudra-red hover:underline">kebijakan privasi</a> dan penggunaan data pribadi untuk keperluan komunikasi.</label>
                             </div>
 
-                            <button type="submit" class="w-full md:w-auto bg-primary hover:bg-primary/90 text-white py-3 px-6 rounded !rounded-button whitespace-nowrap transition-colors font-medium">
+                            <button type="submit" class="w-full md:w-auto bg-samudra-red hover:bg-samudra-red/90 text-white py-3 px-6 rounded !rounded-button whitespace-nowrap transition-colors font-medium">
                                 Kirim Pesan
                             </button>
                         </form>
@@ -164,7 +200,7 @@
             <div class="bg-white rounded-lg shadow-sm p-6">
                 <h2 class="text-2xl font-bold text-gray-900 mb-6">Lokasi Kami</h2>
                 <div class="aspect-[16/9] rounded-lg overflow-hidden">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.666466960186!2d106.82596361513818!3d-6.175387995531605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5d2e764b12d%3A0x3d2ad6e1e0e9bcc8!2sNational%20Monument!5e0!3m2!1sen!2sid!4v1623321351629!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.000174806287!2d95.3222373739693!3d5.566988533541185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3040376870b5b873%3A0xac4db22f09aa61de!2sPT.%20SAMUDRA%20INDAH%20PROPERTI!5e0!3m2!1sid!2sid!4v1751597796191!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>

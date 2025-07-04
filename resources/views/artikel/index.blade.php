@@ -61,7 +61,7 @@
                     </div>
                     <h2 class="text-xl font-semibold mb-2 text-gray-900">{{ $article->judul }}</h2>
                     <p class="text-gray-600 mb-4 line-clamp-3">{{ $article->excerpt ?? \Illuminate\Support\Str::limit(strip_tags($article->konten), 150) }}</p>
-                    <a href="{{ route('artikel.show', $article->slug) }}" class="inline-flex items-center text-primary font-medium">
+                    <a href="{{ route('artikel.show', $article->slug) }}" class="inline-flex items-center text-samudra-red font-medium">
                         Baca Selengkapnya
                         <div class="w-4 h-4 flex items-center justify-center ml-1">
                             <i class="ri-arrow-right-line"></i>

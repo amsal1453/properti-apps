@@ -455,40 +455,40 @@
 
                             <div class="space-y-4">
                                 <div class="flex items-start">
-                                    <div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mr-4 mt-1">
-                                        <i class="ri-map-pin-line text-primary"></i>
+                                    <div class="w-10 h-10 flex items-center justify-center bg-primary-light rounded-full mr-4 mt-1">
+                                        <i class="ri-map-pin-line text-primary-icon"></i>
                                     </div>
                                     <div>
                                         <h4 class="font-bold mb-1">Alamat</h4>
-                                        <p class="text-gray-600">Jl. Jend. Sudirman No. 28, Senayan, Jakarta Selatan 12190</p>
+                                        <p class="text-gray-600">Jl. Tgk Chik Ditiro No.88, Peuniti, Kec. Baiturrahman, Kota Banda Aceh</p>
                                     </div>
                                 </div>
 
                                 <div class="flex items-start">
-                                    <div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mr-4 mt-1">
-                                        <i class="ri-phone-line text-primary"></i>
+                                    <div class="w-10 h-10 flex items-center justify-center bg-primary-light rounded-full mr-4 mt-1">
+                                        <i class="ri-phone-line text-primary-icon"></i>
                                     </div>
                                     <div>
                                         <h4 class="font-bold mb-1">Telepon</h4>
-                                        <p class="text-gray-600">+62 21 5678 9012</p>
+                                        <p class="text-gray-600">+62 852-7087-7887</p>
                                     </div>
                                 </div>
 
                                 <div class="flex items-start">
-                                    <div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mr-4 mt-1">
-                                        <i class="ri-mail-line text-primary"></i>
+                                    <div class="w-10 h-10 flex items-center justify-center bg-primary-light rounded-full mr-4 mt-1">
+                                        <i class="ri-mail-line text-primary-icon"></i>
                                     </div>
                                     <div>
                                         <h4 class="font-bold mb-1">Email</h4>
-                                        <p class="text-gray-600">info@luxeestate.id</p>
+                                        <p class="text-gray-600">info@samudraindahproperti.com</p>
                                     </div>
                                 </div>
 
                                 <div class="flex items-start">
-                                    <div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mr-4 mt-1">
-                                        <i class="ri-time-line text-primary"></i>
+                                    <div class="w-10 h-10 flex items-center justify-center bg-primary-light rounded-full mr-4 mt-1">
+                                        <i class="ri-time-line text-primary-icon"></i>
                                     </div>
-                            <div>
+                                    <div>
                                         <h4 class="font-bold mb-1">Jam Operasional</h4>
                                         <p class="text-gray-600">Senin - Jumat: 09.00 - 17.00 WIB<br>Sabtu: 09.00 - 15.00 WIB</p>
                                     </div>
@@ -498,7 +498,17 @@
 
                         <div>
                             <h3 class="text-2xl font-bold mb-4">Lokasi Kami</h3>
-                            <div class="rounded-lg overflow-hidden h-64 bg-gray-200" style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png'); background-size: cover; background-position: center;"></div>
+                            <div class="rounded-lg overflow-hidden h-[450px]">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.000174806287!2d95.3222373739693!3d5.566988533541185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3040376870b5b873%3A0xac4db22f09aa61de!2sPT.%20SAMUDRA%20INDAH%20PROPERTI!5e0!3m2!1sid!2sid!4v1751597796191!5m2!1sid!2sid"
+                                    width="100%"
+                                    height="450"
+                                    style="border:0;"
+                                    allowfullscreen=""
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    class="rounded-lg">
+                                </iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -506,23 +516,84 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-20 bg-secondary text-white">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-6">Siap Menemukan Properti Impian Anda?</h2>
-            <p class="text-gray-300 max-w-2xl mx-auto mb-8">Jadwalkan konsultasi gratis dengan tim ahli kami dan mulai perjalanan menuju hunian mewah yang sesuai dengan gaya hidup Anda.</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button class="bg-primary text-white px-8 py-3 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all font-medium">Jadwalkan Konsultasi</button>
-                <button class="bg-transparent border-2 border-white text-white px-8 py-3 !rounded-button whitespace-nowrap hover:bg-white hover:text-secondary transition-all font-medium">Hubungi Kami</button>
-            </div>
-        </div>
-    </section>
     <style>
-         h1, h2, h3, h4, h5, h6 {
+        :root {
+            --primary: #E31E24;
+            --primary-dark: #c41a1f;
+            --secondary: #1F2937;
+        }
+
+        .bg-primary {
+            background-color: var(--primary);
+        }
+
+        .hover\:bg-primary:hover {
+            background-color: var(--primary);
+        }
+
+        .text-primary {
+            color: var(--primary);
+        }
+
+        .border-primary {
+            border-color: var(--primary);
+        }
+
+        .focus\:border-primary:focus {
+            border-color: var(--primary);
+        }
+
+        .bg-secondary {
+            background-color: var(--secondary);
+        }
+
+        /* Update Swiper theme color */
+        .swiper-hero-section {
+            --swiper-theme-color: var(--primary);
+        }
+
+        /* Update custom checkbox color */
+        .custom-checkbox {
+            border-color: var(--primary);
+        }
+
+        .custom-checkbox:checked {
+            background-color: var(--primary);
+        }
+
+        /* Update icon backgrounds */
+        .bg-primary-light {
+            background-color: rgba(227, 30, 36, 0.1);
+        }
+
+        .text-primary-icon {
+            color: var(--primary);
+        }
+
+        /* Update transitions */
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+
+        /* Update hover effects */
+        .hover\:text-primary:hover {
+            color: var(--primary);
+        }
+
+        .hover\:bg-primary-dark:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Update focus states */
+        .focus\:ring-primary:focus {
+            --tw-ring-color: var(--primary);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
             font-family: 'Playfair Display', serif;
         }
 
-          .property-card:hover {
+        .property-card:hover {
             transform: translateY(-5px);
         }
 
@@ -536,7 +607,7 @@
 
         input:focus, textarea:focus {
             outline: none;
-            border-color: #D4AF37;
+            border-color: var(--primary);
         }
 
         .custom-checkbox {
@@ -544,7 +615,7 @@
             -webkit-appearance: none;
             width: 20px;
             height: 20px;
-            border: 2px solid #D4AF37;
+            border: 2px solid var(--primary);
             border-radius: 4px;
             outline: none;
             cursor: pointer;
@@ -552,7 +623,7 @@
         }
 
         .custom-checkbox:checked {
-            background-color: #D4AF37;
+            background-color: var(--primary);
         }
 
         .custom-checkbox:checked::after {
@@ -580,7 +651,7 @@
 
         /* Swiper Hero Carousel Styles */
         .swiper-hero-section {
-            --swiper-theme-color: #D4AF37;
+            --swiper-theme-color: var(--primary);
             --swiper-pagination-bullet-inactive-color: #ffffff;
             --swiper-pagination-bullet-inactive-opacity: 0.5;
         }
@@ -642,6 +713,5 @@
                 bottom: 20px;
             }
         }
-
     </style>
 @endsection

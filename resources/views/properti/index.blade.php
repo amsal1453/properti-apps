@@ -16,13 +16,13 @@
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none w-10 h-10">
                                 <i class="ri-search-line text-gray-400"></i>
                             </div>
-                            <input type="text" name="search" value="{{ request('search') }}" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary text-sm" placeholder="Cari berdasarkan lokasi, area, atau nama properti">
+                            <input type="text" name="search" value="{{ request('search') }}" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded focus:ring-2 focus:ring-samudra-red focus:border-samudra-red text-sm" placeholder="Cari berdasarkan lokasi, area, atau nama properti">
                         </div>
                     </div>
 
                     <div class="md:w-3/12">
                         <div class="relative">
-                            <select name="tipe_properti" class="custom-select w-full px-4 py-3 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary text-sm appearance-none pr-10">
+                            <select name="tipe_properti" class="custom-select w-full px-4 py-3 border border-gray-300 rounded focus:ring-2 focus:ring-samudra-red focus:border-samudra-red text-sm appearance-none pr-10">
                                 <option value="all" {{ request('tipe_properti') == 'all' ? 'selected' : '' }}>Semua Tipe</option>
                                 <option value="rumah" {{ request('tipe_properti') == 'rumah' ? 'selected' : '' }}>Rumah</option>
                                 <option value="apartemen" {{ request('tipe_properti') == 'apartemen' ? 'selected' : '' }}>Apartemen</option>
@@ -36,7 +36,7 @@
 
                     <div class="md:w-3/12">
                         <div class="relative">
-                            <select name="status" class="custom-select w-full px-4 py-3 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-primary text-sm appearance-none pr-10">
+                            <select name="status" class="custom-select w-full px-4 py-3 border border-gray-300 rounded focus:ring-2 focus:ring-samudra-red focus:border-samudra-red text-sm appearance-none pr-10">
                                 <option value="all" {{ request('status') == 'all' ? 'selected' : '' }}>Semua Status</option>
                                 <option value="tersedia" {{ request('status') == 'tersedia' ? 'selected' : '' }}>Tersedia</option>
                                 <option value="terjual" {{ request('status') == 'terjual' ? 'selected' : '' }}>Terjual</option>
@@ -47,7 +47,7 @@
                     </div>
 
                     <div class="md:w-1/12">
-                        <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white py-3 px-4 rounded !rounded-button whitespace-nowrap transition-colors flex items-center justify-center">
+                        <button type="submit" class="w-full bg-samudra-red hover:bg-samudra-red/90 text-white py-3 px-4 rounded !rounded-button whitespace-nowrap transition-colors flex items-center justify-center">
                             <i class="ri-filter-3-line mr-2"></i>
                             <span>Filter</span>
                         </button>
@@ -93,8 +93,8 @@
                         </span>
                     </a>
                     <div class="p-4">
-                        <a href="{{ route('properti.show', $property->slug) }}" class="text-lg font-semibold text-gray-900 hover:text-primary mb-1 block">{{ $property->nama_properti }}</a>
-                        <p class="text-primary text-xl font-bold mb-2">
+                        <a href="{{ route('properti.show', $property->slug) }}" class="text-lg font-semibold text-gray-900 hover:text-samudra-red mb-1 block">{{ $property->nama_properti }}</a>
+                        <p class="text-samudra-red text-xl font-bold mb-2">
                             Rp {{ number_format($property->harga, 0, ',', '.') }}
                             @if($property->satuan_harga == 'juta')
                                 Juta

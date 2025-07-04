@@ -31,7 +31,7 @@ class PropertiResource extends Resource
 
     protected static ?string $modelLabel = 'Properti';
 
-    protected static ?int $navigationSort = 2;
+    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
@@ -286,10 +286,7 @@ class PropertiResource extends Resource
         ];
     }
 
-    public static function getNavigationGroup(): ?string
-    {
-        return 'Manajemen Properti';
-    }
+
 
     public static function infolist(Infolist $infolist): Infolist
     {
@@ -378,7 +375,7 @@ class PropertiResource extends Resource
                             ->label('')
                             ->height(120)
                             ->columnSpanFull()
-                            ->extraImgAttributes(['class' => 'grid grid-cols-3 gap-2']), 
+                    ->extraImgAttributes(['class' => 'grid grid-cols-3 gap-2']),
                     ]),
 
                 Infolists\Components\Section::make('Lokasi di Peta')

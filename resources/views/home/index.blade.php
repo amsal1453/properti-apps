@@ -2,6 +2,10 @@
 
 @section('title', 'Beranda')
 
+@push('styles')
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+@endpush
+
 @section('content')
     <!-- Hero Section Carousel with Swiper.js -->
     <section class="swiper-hero-section h-screen relative overflow-hidden">
@@ -15,11 +19,8 @@
                     <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
                         <div class="container mx-auto px-6 text-center">
                             <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-4">Temukan Hunian Mewah Impian Anda</h1>
-                            <p class="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">Kami menawarkan koleksi properti eksklusif dengan desain arsitektur terbaik dan lokasi strategis di seluruh Indonesia.</p>
-                            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                                <button class="bg-primary text-white px-8 py-3 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all text-lg font-medium">Jelajahi Properti</button>
-                                <button class="bg-transparent border-2 border-white text-white px-8 py-3 !rounded-button whitespace-nowrap hover:bg-white hover:text-secondary transition-all text-lg font-medium">Konsultasi Gratis</button>
-                            </div>
+                            <p class="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">Kami menawarkan koleksi properti eksklusif dengan desain arsitektur terbaik dan lokasi strategis di seluruh Banda Aceh dan sekitarnya.</p>
+
                         </div>
                     </div>
                 </div>
@@ -31,10 +32,6 @@
                         <div class="container mx-auto px-6 text-center">
                             <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-4">Investasi Properti Premium</h1>
                             <p class="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">Tingkatkan portofolio investasi Anda dengan properti eksklusif yang menawarkan nilai apresiasi tinggi.</p>
-                            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                                <button class="bg-primary text-white px-8 py-3 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all text-lg font-medium">Mulai Investasi</button>
-                                <button class="bg-transparent border-2 border-white text-white px-8 py-3 !rounded-button whitespace-nowrap hover:bg-white hover:text-secondary transition-all text-lg font-medium">Hubungi Ahli</button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -46,10 +43,7 @@
                         <div class="container mx-auto px-6 text-center">
                             <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-4">Pengalaman Hunian Mewah</h1>
                             <p class="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">Nikmati kenyamanan hidup dengan fasilitas eksklusif dan layanan premium di lokasi strategis.</p>
-                            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                                <button class="bg-primary text-white px-8 py-3 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all text-lg font-medium">Lihat Properti</button>
-                                <button class="bg-transparent border-2 border-white text-white px-8 py-3 !rounded-button whitespace-nowrap hover:bg-white hover:text-secondary transition-all text-lg font-medium">Jadwalkan Tur</button>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -115,56 +109,56 @@
     <section class="py-12 bg-white">
         <div class="container mx-auto px-6">
             <div class="bg-white shadow-xl rounded-lg -mt-24 relative z-10 p-8">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <form action="{{ route('properti.search') }}" method="GET">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                         <div>
-                        <label class="block text-gray-700 font-medium mb-2">Tipe Properti</label>
-                        <div class="relative">
-                            <select class="w-full bg-gray-50 border border-gray-200 rounded px-4 py-3 appearance-none focus:outline-none focus:border-primary pr-8">
-                                <option>Semua Tipe</option>
-                                <option>Rumah</option>
-                                <option>Apartemen</option>
-                                <option>Villa</option>
-                                <option>Tanah</option>
-                            </select>
-                            <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                                <i class="ri-arrow-down-s-line text-gray-500"></i>
+                            <label class="block text-gray-700 font-medium mb-2">Tipe Properti</label>
+                            <div class="relative">
+                                <select name="tipe_properti" class="w-full bg-gray-50 border border-gray-200 rounded px-4 py-3 appearance-none focus:outline-none focus:border-primary pr-8">
+                                    <option value="">Semua Tipe</option>
+                                    <option value="rumah">Rumah</option>
+                                    <option value="apartemen">Apartemen</option>
+                                    <option value="villa">Villa</option>
+                                    <option value="tanah">Tanah</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                    <i class="ri-arrow-down-s-line text-gray-500"></i>
+                                </div>
                             </div>
                         </div>
-                        </div>
                         <div>
-                        <label class="block text-gray-700 font-medium mb-2">Lokasi</label>
-                        <div class="relative">
-                            <select class="w-full bg-gray-50 border border-gray-200 rounded px-4 py-3 appearance-none focus:outline-none focus:border-primary pr-8">
-                                <option>Semua Lokasi</option>
-                                <option>Jakarta</option>
-                                <option>Bandung</option>
-                                <option>Surabaya</option>
-                                <option>Bali</option>
-                            </select>
-                            <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                                <i class="ri-arrow-down-s-line text-gray-500"></i>
+                            <label class="block text-gray-700 font-medium mb-2">Lokasi</label>
+                            <div class="relative">
+                                <select name="lokasi" class="w-full bg-gray-50 border border-gray-200 rounded px-4 py-3 appearance-none focus:outline-none focus:border-primary pr-8">
+                                    <option value="">Semua Lokasi</option>
+                                    <option value="Banda Aceh">Banda Aceh</option>
+                                    <option value="Aceh Besar">Aceh Besar</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                    <i class="ri-arrow-down-s-line text-gray-500"></i>
+                                </div>
                             </div>
                         </div>
-                        </div>
                         <div>
-                        <label class="block text-gray-700 font-medium mb-2">Rentang Harga</label>
-                        <div class="relative">
-                            <select class="w-full bg-gray-50 border border-gray-200 rounded px-4 py-3 appearance-none focus:outline-none focus:border-primary pr-8">
-                                <option>Semua Harga</option>
-                                <option>< Rp 1 Miliar</option>
-                                <option>Rp 1 - 5 Miliar</option>
-                                <option>Rp 5 - 10 Miliar</option>
-                                <option>> Rp 10 Miliar</option>
-                            </select>
-                            <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                                <i class="ri-arrow-down-s-line text-gray-500"></i>
+                            <label class="block text-gray-700 font-medium mb-2">Rentang Harga</label>
+                            <div class="relative">
+                                <select name="harga" class="w-full bg-gray-50 border border-gray-200 rounded px-4 py-3 appearance-none focus:outline-none focus:border-primary pr-8">
+                                    <option value="">Semua Harga</option>
+                                    <option value="<1">< Rp 1 Miliar</option>
+                                    <option value="1-5">Rp 1 - 5 Miliar</option>
+                                    <option value="5-10">Rp 5 - 10 Miliar</option>
+                                    <option value=">10">> Rp 10 Miliar</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                    <i class="ri-arrow-down-s-line text-gray-500"></i>
+                                </div>
                             </div>
+                        </div>
+                        <div class="flex items-end">
+                            <button type="submit" class="w-full bg-primary text-white px-6 py-3 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all font-medium">Cari Properti</button>
                         </div>
                     </div>
-                    <div class="flex items-end">
-                        <button class="w-full bg-primary text-white px-6 py-3 !rounded-button whitespace-nowrap hover:bg-opacity-90 transition-all font-medium">Cari Properti</button>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </section>
@@ -172,7 +166,7 @@
     <!-- Featured Properties -->
     <section id="properties" class="py-20 bg-gray-50">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-4xl font-bold mb-4">Properti Unggulan</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">Koleksi properti eksklusif yang telah kami pilih dengan teliti untuk memenuhi standar kualitas dan kemewahan tertinggi.</p>
             </div>
@@ -180,7 +174,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @forelse($featuredProperties as $property)
                 <!-- Property Card -->
-                <div class="property-card bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-300">
+                <div class="property-card bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                     <a href="{{ route('properti.show', $property->slug) }}" class="relative block">
                         @if($property->hasMedia('gambar_properti'))
                             <img src="{{ $property->getFirstMediaUrl('gambar_properti', 'thumb') }}" alt="{{ $property->nama_properti }}" class="w-full h-64 object-cover object-top">
@@ -243,8 +237,8 @@
                 @endforelse
             </div>
 
-            <div class="text-center mt-12">
-                <a href="{{ route('properti.index') }}" class="bg-white border border-primary text-primary px-8 py-3 !rounded-button whitespace-nowrap hover:bg-primary hover:text-white transition-all font-medium">Lihat Semua Properti</a>
+            <div class="text-center mt-12" data-aos="fade-up">
+                <a href="{{ route('properti.index') }}" class="bg-white border border-primary text-primary px-8 py-3 !rounded-button whitespace-nowrap hover:bg-red-500 hover:text-white  transition-all font-medium">Lihat Semua Properti</a>
             </div>
         </div>
     </section>
@@ -253,14 +247,14 @@
     <!-- Testimonial Section -->
     <section class="py-20 bg-gray-50">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-4xl font-bold mb-4">Apa Kata Klien Kami</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">Pengalaman nyata dari klien yang telah mempercayakan kebutuhan properti mereka kepada kami.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Testimonial 1 -->
-                <div class="bg-white p-8 rounded-lg shadow-lg">
+                <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="0">
                     <div class="flex items-center mb-6">
                         <img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20an%20Indonesian%20businessman%20in%20his%2040s%20wearing%20a%20formal%20suit%2C%20with%20a%20confident%20smile%20and%20well-groomed%20appearance.%20The%20photo%20has%20a%20neutral%20background%20and%20professional%20lighting%2C%20creating%20a%20trustworthy%20and%20authoritative%20impression.%20The%20image%20is%20cropped%20as%20a%20circular%20portrait%20focusing%20on%20his%20face%20and%20shoulders.&width=100&height=100&seq=test1&orientation=squarish" alt="Ahmad Suryanto" class="w-16 h-16 rounded-full object-cover mr-4">
                         <div>
@@ -281,7 +275,7 @@
                 </div>
 
                 <!-- Testimonial 2 -->
-                <div class="bg-white p-8 rounded-lg shadow-lg">
+                <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex items-center mb-6">
                         <img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20an%20Indonesian%20businesswoman%20in%20her%2030s%20with%20long%20black%20hair%2C%20wearing%20a%20stylish%20business%20attire.%20She%20has%20a%20warm%2C%20approachable%20smile%20and%20natural%20makeup.%20The%20photo%20has%20a%20neutral%20background%20with%20professional%20lighting%2C%20creating%20a%20confident%20and%20trustworthy%20impression.%20The%20image%20is%20cropped%20as%20a%20circular%20portrait%20focusing%20on%20her%20face%20and%20shoulders.&width=100&height=100&seq=test2&orientation=squarish" alt="Anita Wijaya" class="w-16 h-16 rounded-full object-cover mr-4">
                         <div>
@@ -302,7 +296,7 @@
                 </div>
 
                 <!-- Testimonial 3 -->
-                <div class="bg-white p-8 rounded-lg shadow-lg">
+                <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
                     <div class="flex items-center mb-6">
                         <img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20young%20Indonesian%20entrepreneur%20in%20his%20early%2030s%20with%20short%20black%20hair%2C%20wearing%20a%20smart%20casual%20outfit%20with%20a%20blazer.%20He%20has%20a%20friendly%2C%20confident%20smile%20and%20a%20modern%20appearance.%20The%20photo%20has%20a%20neutral%20background%20with%20professional%20lighting%2C%20creating%20an%20approachable%20yet%20professional%20impression.%20The%20image%20is%20cropped%20as%20a%20circular%20portrait%20focusing%20on%20his%20face%20and%20shoulders.&width=100&height=100&seq=test3&orientation=squarish" alt="Budi Santoso" class="w-16 h-16 rounded-full object-cover mr-4">
                         <div>
@@ -328,7 +322,7 @@
     <!-- Latest Articles -->
     <section id="articles" class="py-20 bg-white">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-4xl font-bold mb-4">Artikel Terbaru</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">Dapatkan informasi dan insight terkini seputar pasar properti, investasi, dan gaya hidup mewah.</p>
             </div>
@@ -336,7 +330,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 @forelse($recentArticles as $article)
                 <!-- Article Card -->
-                <div class="article-card bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-300">
+                <div class="article-card bg-white rounded-lg overflow-hidden shadow-lg transition-all duration-300" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                     @if($article->gambar)
                         <img src="{{ asset('storage/' . $article->gambar) }}" alt="{{ $article->judul }}" class="w-full h-56 object-cover object-top">
                     @else
@@ -366,7 +360,7 @@
                 @endforelse
             </div>
 
-            <div class="text-center mt-12">
+            <div class="text-center mt-12" data-aos="fade-up">
                 <a href="{{ route('artikel.index') }}" class="bg-white border border-primary text-primary px-8 py-3 !rounded-button whitespace-nowrap hover:bg-primary hover:text-white transition-all font-medium inline-block">Lihat Semua Artikel</a>
             </div>
         </div>
@@ -375,13 +369,13 @@
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-gray-50">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-4xl font-bold mb-4">Hubungi Kami</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">Konsultasikan kebutuhan properti Anda dengan tim ahli kami dan temukan solusi terbaik untuk investasi properti Anda.</p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div>
+                <div data-aos="fade-right">
                     <form action="{{ route('kontak.kirim') }}" method="POST">
                         @csrf
 
@@ -447,7 +441,7 @@
                     </form>
                 </div>
 
-                <div>
+                <div data-aos="fade-left">
                     <div class="bg-white p-8 rounded-lg shadow-lg h-full">
                         <div class="mb-8">
                             <h3 class="text-2xl font-bold mb-4">Informasi Kontak</h3>

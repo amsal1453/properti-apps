@@ -55,7 +55,12 @@ class PropertiResource extends Resource
                             Forms\Components\TextInput::make('whatsapp_pemilik')
                                 ->required()
                                 ->maxLength(255)
-                                ->label('WhatsApp Pemilik'),
+                        ->tel()
+                        ->prefix('+')
+                        ->helperText('Format: 628123456789 (tanpa spasi atau karakter khusus)')
+                        ->label('WhatsApp Pemilik')
+                        ->beforeStateDehydrated(fn(Forms\Components\TextInput $component, $state) =>
+                        $component->state(preg_replace('/[^0-9]/', '', $state))),
                             Forms\Components\TextInput::make('pemilik')
                                 ->required()
                                 ->maxLength(255),
@@ -100,7 +105,7 @@ class PropertiResource extends Resource
                                 ->label('Jumlah Kamar')
                                 ->default(0),
                             Forms\Components\TextInput::make('jumlah_kamar_mandi')
-                                ->numeric()
+                                    ->numeric()
                                 ->label('Jumlah Kamar Mandi')
                                 ->default(0),
                             Forms\Components\TextInput::make('jumlah_parkir')
@@ -108,6 +113,7 @@ class PropertiResource extends Resource
                                 ->label('Jumlah Parkir')
                                 ->default(0),
                             Forms\Components\TextInput::make('luas_bangunan')
+                                ->required()
                                 ->numeric()
                                 ->label('Luas Bangunan (m²)')
                                 ->suffix('m²'),
@@ -184,6 +190,7 @@ class PropertiResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->persistFiltersInSession()
             ->columns([
             Tables\Columns\SpatieMediaLibraryImageColumn::make('gambar_properti')
                 ->collection('gambar_properti')
@@ -306,7 +313,8 @@ class PropertiResource extends Resource
                             ->label('Pemilik'),
                         Infolists\Components\TextEntry::make('whatsapp_pemilik')
                             ->label('WhatsApp Pemilik')
-                            ->url(fn($record) => "https://wa.me/{$record->whatsapp_pemilik}")
+                    ->formatStateUsing(fn($state) => '+' . preg_replace('/[^0-9]/', '', $state))
+                    ->url(fn($record) => "https://wa.me/" . preg_replace('/[^0-9]/', '', $record->whatsapp_pemilik))
                             ->openUrlInNewTab(),
                         Infolists\Components\TextEntry::make('tipe_properti')
                             ->label('Tipe Properti')

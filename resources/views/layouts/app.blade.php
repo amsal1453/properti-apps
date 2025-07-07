@@ -18,6 +18,7 @@
         :root {
             --samudra-red: #E31E24;
             --samudra-red-dark: #c41a1f;
+            --primary: var(--samudra-red);
         }
     </style>
 </head>

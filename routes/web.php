@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/properti', [PropertiController::class, 'index'])->name('properti.index');
+Route::get('/properti/search', [PropertiController::class, 'search'])->name('properti.search');
 Route::get('/properti/{slug}', [PropertiController::class, 'show'])->name('properti.show');
 
 Route::get('/artikel', [ArtikelController::class, 'index'])->name('artikel.index');

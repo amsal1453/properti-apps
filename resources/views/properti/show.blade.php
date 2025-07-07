@@ -98,7 +98,7 @@
                         </div>
                         <div class="flex flex-col items-center justify-center p-4 bg-gray-50 rounded-lg">
                             <div class="w-10 h-10 flex items-center justify-center text-primary text-xl mb-2">
-                                <i class="ri-shower-line"></i>
+                                <i class="ri-door-lock-line"></i>
                             </div>
                             <span class="text-gray-500 text-sm">Kamar Mandi</span>
                             <span class="font-bold text-gray-800">{{ $property->jumlah_kamar_mandi }}</span>
@@ -157,14 +157,14 @@
                         </div>
                     </div>
 
-                    <a href="https://wa.me/{{ $property->whatsapp_pemilik }}" target="_blank" class="flex items-center justify-center w-full bg-green-500 hover:bg-green-600 text-white py-3 px-4 rounded !rounded-button whitespace-nowrap transition-colors mb-4">
+                    <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $property->whatsapp_pemilik) }}" target="_blank" class="flex items-center justify-center w-full bg-green-500 hover:bg-green-600 text-white py-3 px-4 rounded !rounded-button whitespace-nowrap transition-colors mb-4">
                         <div class="w-5 h-5 flex items-center justify-center mr-2">
                             <i class="ri-whatsapp-line"></i>
                         </div>
                         <span>Hubungi via WhatsApp</span>
                     </a>
 
-                    <a href="tel:{{ $property->whatsapp_pemilik }}" class="flex items-center justify-center w-full bg-primary hover:bg-primary/90 text-white py-3 px-4 rounded !rounded-button whitespace-nowrap transition-colors">
+                    <a href="tel:{{ preg_replace('/[^0-9+]/', '', $property->whatsapp_pemilik) }}" class="flex items-center justify-center w-full bg-primary hover:bg-primary/90 text-white py-3 px-4 rounded !rounded-button whitespace-nowrap transition-colors">
                         <div class="w-5 h-5 flex items-center justify-center mr-2">
                             <i class="ri-phone-line"></i>
                         </div>

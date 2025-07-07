@@ -6,36 +6,32 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Artikel & Tips Properti</h1>
 
-        <div class="flex flex-col md:flex-row gap-4 mb-8">
+        <form action="{{ route('artikel.index') }}" method="GET" class="flex flex-col md:flex-row gap-4 mb-8">
             <div class="relative flex-1">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <div class="w-5 h-5 flex items-center justify-center text-gray-400">
                         <i class="ri-search-line"></i>
                     </div>
                 </div>
-                <input type="text" class="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 rounded shadow-sm" placeholder="Cari artikel..." />
+                <input type="text" name="search" value="{{ $search ?? '' }}" class="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 rounded shadow-sm" placeholder="Cari artikel..." />
             </div>
 
             <div class="relative">
-                <button id="categoryButton" class="flex items-center justify-between w-full md:w-48 px-4 py-3 bg-white border border-gray-200 rounded shadow-sm !rounded-button whitespace-nowrap">
-                    <span>Semua Kategori</span>
-                    <div class="w-5 h-5 flex items-center justify-center ml-2">
-                        <i class="ri-arrow-down-s-line"></i>
-                    </div>
-                </button>
-
-                <div id="categoryDropdown" class="hidden absolute z-10 mt-1 w-full bg-white border border-gray-200 rounded shadow-lg">
-                    <div class="py-1">
-                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Semua Kategori</a>
-                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Tips Properti</a>
-                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Investasi</a>
-                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Interior</a>
-                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Arsitektur</a>
-                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Berita Properti</a>
-                    </div>
+                <select id="kategori" name="kategori" class="w-full md:w-48 px-4 py-3 bg-white border border-gray-200 rounded shadow-sm appearance-none">
+                    <option value="Semua Kategori" {{ ($kategori ?? '') == 'Semua Kategori' ? 'selected' : '' }}>Semua Kategori</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category }}" {{ ($kategori ?? '') == $category ? 'selected' : '' }}>{{ $category }}</option>
+                    @endforeach
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                    <i class="ri-arrow-down-s-line"></i>
                 </div>
             </div>
-        </div>
+
+            <button type="submit" class="bg-primary text-white px-4 py-3 rounded shadow-sm">
+                Filter
+            </button>
+        </form>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @forelse($artikel as $article)
@@ -78,7 +74,7 @@
 
         <!-- Pagination -->
         <div class="flex justify-center mt-12">
-            {{ $artikel->links() }}
+            {{ $artikel->appends(request()->query())->links() }}
         </div>
     </main>
 @endsection

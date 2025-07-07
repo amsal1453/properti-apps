@@ -136,7 +136,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="https://wa.me/{{ $property->whatsapp_pemilik }}" target="_blank" class="flex items-center justify-center w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded !rounded-button whitespace-nowrap transition-colors">
+                        <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $property->whatsapp_pemilik) }}" target="_blank" class="flex items-center justify-center w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded !rounded-button whitespace-nowrap transition-colors">
                             <div class="w-5 h-5 flex items-center justify-center mr-2">
                                 <i class="ri-whatsapp-line"></i>
                             </div>
